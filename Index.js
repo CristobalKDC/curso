@@ -13,7 +13,7 @@ app.use('/api/usuarios', rutaUsuarios);
 
 
 
-const grupoUsuarios = [
+const usuarios = [
   {
     id: 1,
     nombre: 'Valka',
@@ -65,13 +65,13 @@ const grupoUsuarios = [
 
 app.get('/api/grupoUsuarios/', (req,res,next) => {
     res.json({
-        usuarios: grupoUsuarios
+        usuarios: usuarios
     });
 });
 
 app.get('/api/grupoUsuarios/:id', (req, res, next) => {
 	let idUsuario = parseInt(req.params.id);
-    const unUsuario = grupoUsuarios.find((usuario) => {
+    const unUsuario = usuarios.find((usuario) => {
         return usuario.id === idUsuario;
     });
     if (!unUsuario) {
