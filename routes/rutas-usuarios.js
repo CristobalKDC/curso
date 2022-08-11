@@ -48,7 +48,7 @@ router.get('/', (req,res,next) => {
         usuarios: fotored
     });
 });
-
+//muestra un usuarios por su nombre
 router.get('/:nombre', (req, res, next) => {
 	let nombreUsuario = req.params.nombre;
     const unUsuario = fotored.find((usuario) => {
