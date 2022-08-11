@@ -16,7 +16,6 @@ app.use('/api/usuarios', rutaUsuarios);
 app.use('/api/grupoUsuarios', rutaGrupoUsuarios);
 
 
-
 app.use((req,res,next) => {
   res.status(404);
   res.json({
