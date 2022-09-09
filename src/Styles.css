@@ -1,0 +1,163 @@
+body {
+	margin: 0%;
+	padding: 0%;
+}
+
+.navbar {
+	display: flex;
+	margin-bottom: 50px;
+	padding: 7px 7px 7px 7px;
+	font-size: 1.1rem;
+	justify-content: flex-end;
+    border-bottom:solid ;
+}
+
+.navlink {
+	margin: 5px;
+    margin-right: 50px;
+    text-decoration: none;
+    color:red;
+}
+
+.inicioTotal {
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-repeat: no-repeat;
+
+}
+
+.fondoInicio {
+    height: 80vh;
+    width: 100%;
+    background-image: url(components/img/inicio.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+
+.paginaCompleta {
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgb(127, 255, 212),blue);
+
+}
+
+.cajaFormularioTotal {
+    /* background-color: green; */
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cajaFormulario {
+    height: 70vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    background-color: gold;
+    border-style:double;
+    border-radius: 80px;
+}
+
+h1{
+    text-decoration: underline;
+    color: blue;
+}
+
+.FormularioDocentes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 100%;
+    
+}
+
+form h2 {
+    color:yellow;
+}
+.form1 {
+    width: 60%;
+    height: 60%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    background-color: blue;
+    border-radius: 2rem;
+}
+
+.form2 {
+    width: 60%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    background-color: blue;
+    border-radius: 2rem;
+}
+
+input {
+    margin: 20px;
+    width: 60%;
+
+}
+
+.btn {
+    margin: 10px;
+    background-color: rgb(0, 255, 234);
+
+}
+.btn:active {
+    background-color: red;
+}
+
+form button:hover {
+    background-color: antiquewhite;
+} 
+
+.cursosTotal {
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.FormularioCursos {
+    width: 70%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.cartas {
+    width: 100%;
+    margin: 14px;
+    display:flex;
+    align-items: center;
+    justify-content:space-around;
+    flex-wrap: wrap;
+    
+}
+
+#cajita {
+    height: 100%;
+    width: 150px;
+    margin-right: 10px;
+}
+
+.oculto {
+    display: none;
+}
