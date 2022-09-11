@@ -1,13 +1,27 @@
-import React from 'react';
+import React from 'react'
 import axios from 'axios';
 
-const EliminarCurso = ({curso}) => {
+const recuperarDatosDocente = () => {
+    const recuperarDatos = JSON.parse(localStorage.getItem('datosUsuario'));
+    if (recuperarDatos && recuperarDatos.token) {
+        return [recuperarDatos.token, recuperarDatos.userId];
+ }
+};
 
-    const URL = `https://genial-beaker-361708.nw.r.appspot.com/api/cursos/${curso.id}`
+
+const EliminarCurso = ({curso,todosLosCursos}) => {
 
     const eliminarCurso = async (idCurso) => {
-        await axios.delete(`https://genial-beaker-361708.nw.r.appspot.com/api/cursos/`)
+		const URLEliminar = `https://genial-beaker-361708.nw.r.appspot.com/api/cursos/${idCurso}`
+        
+        await axios.delete(URLEliminar,
+            {
+                headers: {
+                    Authorization: 'Bearer ' + recuperarDatosDocente()[0], // En los headers van 'Bearer ' + token recibido
+                }
+            })
         .then((response) =>{
+            todosLosCursos();
             console.log(response.data);
         })
         .catch((error) => {
@@ -15,9 +29,14 @@ const EliminarCurso = ({curso}) => {
         });
     };
 
+    const gestorDelete = () => {
+        eliminarCurso(curso._id)
+        
+    }
+
   return (
     <div>
-        <h1>ADVERTENCIA</h1>
+        <button className='botonEliminar' onClick={gestorDelete}> Eliminar </button>
     </div>
   )
 }

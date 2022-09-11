@@ -18,6 +18,7 @@ import FormularioLogin from './pages/FormularioLogin' //login del docente
 import FormularioDocentes from './pages/FormularioDocentes' //Crear docente
 import Logout from './pages/Logout' //cerrar sesion
 import Error from './components/Error'; //Pagina de error
+import ModificarCurso from './components/ModificarCurso';
 
 const App = () => {
 	
@@ -59,9 +60,6 @@ const App = () => {
 		setTieneAcceso(false);
 	}
 	
-	
-	
-
 	return (
 		<div className='paginaCompleta'>
 
@@ -103,10 +101,11 @@ const App = () => {
 				<Routes>
 					<Route path='/' element={<Inicio />} />
 					<Route path='/cursos' element={<Cursos />} />
-					<Route path='/docentes' element={<Docentes />} />
+					<Route path='/docentes/*' element={<Docentes />} />
 					<Route path='/acceso' element={<FormularioLogin gestionarAcceso={gestionarAcceso}/>} />
 					<Route path='/registro' element={<FormularioDocentes />} />
 					<Route path='/logout' element={<Logout  gestionarLogout={gestionarLogout}/>} />
+					{/* <Route path='/modificar/curso' element={<ModificarCurso />} /> */}
 					<Route path='/404' element={<Error />} />
 					<Route path='*' element={<Navigate to='/404' replace />} />
 				</Routes>

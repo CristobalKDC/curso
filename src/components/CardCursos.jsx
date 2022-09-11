@@ -1,31 +1,25 @@
-import React from 'react';
+import React,{ useState, useEffect } from 'react';
 import axios from 'axios';
-import ModificarCurso from '../components/ModificarCurso'
-import EliminarCurso from '../components/EliminarCurso'
+import EliminarCurso from './EliminarCurso';
+import ModificarCurso from './ModificarCurso';
 
 
 
-const CardCursos = ({curso}) => {
-    //console.log(curso);
+const CardCursos = ({curso,todosLosCursos,gestorCambioFormulario}) => {
+    //console.log(curso);	
+	const [modificar,setModificar] = useState(false);
 	
 
-	const eliminarCurso = async (idCurso) => {
-		// const URLDELETE = `http://localhost:5000/api/cursos/${idCurso}`
-		const URLEliminar = `https://genial-beaker-361708.nw.r.appspot.com/api/cursos/${idCurso}`
-        await axios.delete(URLEliminar)
-        .then((response) =>{
-            console.log(response.data);
-        })
-        .catch((error) => {
-            console.log(error.message);
-        });
-    };
+	const cambioModificar = () => {
+		setModificar(true);
+	};
+	const cambioGuardar = () => {
+		setModificar(false);
+	};
+	console.log(modificar)
 
-	const gestorDelete = () => {
-		eliminarCurso(curso._id)
-	}
 	
-	
+
   return (
     <div className='card bg-light mb-3' style={{ width: '22rem' }} id='cajita'>
 			
@@ -36,10 +30,18 @@ const CardCursos = ({curso}) => {
 				<h6>Docente: <span>{curso.docente.nombre}</span></h6>
 				<h6>Opcion: <span>{curso.opcion}</span></h6>
 				<h6>Aula: <span>{curso.aula}</span></h6>
+				<h6>Precio: <span>{curso.precio} €</span></h6>
 				<div className='botonesCurso'>
+
 					
-					<button className='botonModificar' > Modificar </button>
-					<button className='botonEliminar' onClick={gestorDelete}> Eliminar </button>
+					{modificar === false ?
+					 <button  onClick={cambioModificar} >Modificar</button> : <button onClick={cambioGuardar}>Guardar</button>}
+					
+					{/* <div className='cajaModificar' key={curso.id} > <ModificarCurso unCurso={curso} todosLosCursos={todosLosCursos}/>  </div> */}
+					
+					
+
+					<div className='cajaEliminar' key={curso.id}> <EliminarCurso curso={curso} todosLosCursos={todosLosCursos}/> </div>
 						
 				</div>
 			</div>

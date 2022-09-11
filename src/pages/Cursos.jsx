@@ -2,6 +2,7 @@ import axios from 'axios';
 import React,{ useState, useEffect } from 'react';
 import CardCursos from '../components/CardCursos';
 import FormularioCurso from './FormularioCurso';
+import ModificarCurso from '../components/ModificarCurso';
 
 
 const Cursos = () => {
@@ -10,13 +11,16 @@ const Cursos = () => {
   const URL = `https://genial-beaker-361708.nw.r.appspot.com/api/cursos/`;  //para recibir todos los cursos
   const [cursos, setCursos] = useState([]);
   const [docente,setDocente] = useState();
+  
 
+
+  
 
   //Sacamos el token
   const extraerDatosDeUsuario = () => {
     const datosRecuperar = JSON.parse(localStorage.getItem('datosUsuario'));
     if (datosRecuperar && datosRecuperar.token) { // Si existe algo que recuperar y dentro de lo recuperado existe la propiedad token
-      console.log(datosRecuperar.userId);
+      //console.log(datosRecuperar.userId);
       setDocente(datosRecuperar.userId);
     }
   };
@@ -49,15 +53,17 @@ const todosLosCursos = async () => {
   // console.log(buscarCursos);
 
   // console.log(cursos.map((curso)=>curso.docente.id))
-
+ 
   return (
     <div className='cursosTotal'>
 
+      
       <FormularioCurso todosLosCursos={todosLosCursos}/>
+      
 
      <div className='cartas'>
 			{buscarCursos.map((curso) => {
-				return <CardCursos key={curso._id} curso={curso} />
+				return <CardCursos key={curso._id} curso={curso} todosLosCursos={todosLosCursos} />
 			})}
 			</div>
     </div>
