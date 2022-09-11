@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React,{ useState, useEffect } from 'react';
-import CardCursos from '../components/CardCursos';
+import CardCursosMod from '../components/CardCursosMod';
 import FormularioCurso from './FormularioCurso';
-import ModificarCurso from '../components/ModificarCurso';
+import '../Styles/Styles_Cursos.css'
+
 
 
 const Cursos = () => {
@@ -63,7 +64,7 @@ const todosLosCursos = async () => {
 
      <div className='cartas'>
 			{buscarCursos.map((curso) => {
-				return <CardCursos key={curso._id} curso={curso} todosLosCursos={todosLosCursos} />
+				return <CardCursosMod key={curso._id} unCurso={curso} todosLosCursos={todosLosCursos} />
 			})}
 			</div>
     </div>

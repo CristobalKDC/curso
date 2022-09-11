@@ -35,7 +35,7 @@ const EliminarCurso = ({curso,todosLosCursos}) => {
     }
 
   return (
-    <div>
+    <div className='cajaEliminar'>
         <button className='botonEliminar' onClick={gestorDelete}> Eliminar </button>
     </div>
   )

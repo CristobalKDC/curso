@@ -33,7 +33,7 @@ body {
 .fondoInicio {
     height: 80vh;
     width: 100%;
-    background-image: url(components/img/inicio.gif);
+    background-image: url(../components/img/inicio.gif);
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -101,16 +101,20 @@ form h2 {
     height: 60%;
     display: flex;
     flex-direction: column;
-    justify-content:center;
     align-items:center;
     background-color: blue;
     border-radius: 2rem;
 }
 
 input {
-    margin: 20px;
+    margin-bottom: 8px;
     width: 60%;
 
+}
+
+select {
+    margin-bottom: 8px;
+    width: 60%;
 }
 
 .btn {
@@ -126,13 +130,7 @@ form button:hover {
     background-color: antiquewhite;
 } 
 
-.cursosTotal {
-    width: 100%;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .FormularioCursos {
     width: 70%;
@@ -142,21 +140,6 @@ form button:hover {
 
 }
 
-.cartas {
-    width: 100%;
-    margin: 14px;
-    display:flex;
-    align-items: center;
-    justify-content:space-around;
-    flex-wrap: wrap;
-    
-}
-
-#cajita {
-    height: 100%;
-    width: 150px;
-    margin-right: 10px;
-}
 
 .oculto {
     display: none;

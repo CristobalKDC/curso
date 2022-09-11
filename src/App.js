@@ -9,7 +9,7 @@ import {
 	NavLink,
 	
 } from 'react-router-dom';
-import './Styles.css'
+import './Styles/Styles.css'
 //Enlaces paginas
 import Inicio from './pages/Inicio' //Pagina de inicio
 import Docentes from './pages/Docentes'; //Listar docentes
@@ -18,7 +18,7 @@ import FormularioLogin from './pages/FormularioLogin' //login del docente
 import FormularioDocentes from './pages/FormularioDocentes' //Crear docente
 import Logout from './pages/Logout' //cerrar sesion
 import Error from './components/Error'; //Pagina de error
-import ModificarCurso from './components/ModificarCurso';
+
 
 const App = () => {
 	

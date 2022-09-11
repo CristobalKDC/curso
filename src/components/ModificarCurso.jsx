@@ -13,17 +13,11 @@ const recuperarDatosDocente = () => {
 const ModificarCurso = ({unCurso,todosLosCursos}) => {
 
     const URL = `https://genial-beaker-361708.nw.r.appspot.com/api/cursos/${unCurso._id}`
-    // const { register, handleSubmit, setValue, formState: {errors} } = useForm();
-    // const onSubmit = data => console.log(data);
     const [curso,setCurso] = useState(unCurso.curso);
     const [opcion,setOpcion] = useState(unCurso.opcion);
     const [aula,setAula] = useState(unCurso.aula);
     const [precio,setPrecio] = useState(unCurso.precio);
     
-
-
-
-
   const gestorFormulario = async (data) => {
     
     //console.log(recuperarDatosDocente()[1]);
