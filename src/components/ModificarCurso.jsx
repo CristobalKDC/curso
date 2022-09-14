@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
 
@@ -12,7 +11,8 @@ const recuperarDatosDocente = () => {
 
 const ModificarCurso = ({unCurso,todosLosCursos}) => {
 
-    const URL = `https://genial-beaker-361708.nw.r.appspot.com/api/cursos/${unCurso._id}`
+    const URL = `${process.env.REACT_APP_BACKEND_URL}/cursos/${unCurso._id}`
+    // const URL = `https://genial-beaker-361708.nw.r.appspot.com/api/cursos/${unCurso._id}`
     const [curso,setCurso] = useState(unCurso.curso);
     const [opcion,setOpcion] = useState(unCurso.opcion);
     const [aula,setAula] = useState(unCurso.aula);

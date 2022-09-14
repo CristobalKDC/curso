@@ -7,7 +7,9 @@ import { useNavigate } from 'react-router-dom';
 const FormularioLogin = ({gestionarAcceso}) => {
 	
 	// const URL = `http://localhost:5000/api/docentes/login`;
-  const URL = `https://genial-beaker-361708.nw.r.appspot.com/api/docentes/login`;
+  // const URL =`https://genial-beaker-361708.nw.r.appspot.com/api/docentes/login`;
+  const URL = `${process.env.REACT_APP_BACKEND_URL}/docentes/login`
+  
   const { register, handleSubmit, setValue, formState: {errors} } = useForm();
   const onSubmit = data => console.log(data);
 	const navegar = useNavigate();

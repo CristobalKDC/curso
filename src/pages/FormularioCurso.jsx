@@ -14,12 +14,13 @@ const recuperarDatosDocente = () => {
 
 
 
-const FormularioCurso =  ({todosLosCursos}) => {
+const FormularioCurso =  () => {
 
     // const URL = 'http://localhost:5000/api/cursos/'
     
 
-    const URL = 'https://genial-beaker-361708.nw.r.appspot.com/api/cursos/'
+    const URL = `${process.env.REACT_APP_BACKEND_URL}/cursos/`
+    // const URL = 'https://genial-beaker-361708.nw.r.appspot.com/api/cursos/'
     const { register, handleSubmit, setValue, formState: {errors} } = useForm();
     const navegar = useNavigate();
     const onSubmit = data => console.log(data);
@@ -51,13 +52,15 @@ const FormularioCurso =  ({todosLosCursos}) => {
         setValue('precio', null);
         
         
-        todosLosCursos();
+        navegar('/curso/agregado');
         return console.log(response.data.curso)
         
     }catch (err) {
         console.log(err);
     }
    };
+
+
 
 
   return (

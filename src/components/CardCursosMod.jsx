@@ -1,21 +1,25 @@
 import React,{ useState, useEffect } from 'react';
 import axios from 'axios';
 import EliminarCurso from './EliminarCurso';
-
+import { useNavigate } from 'react-router-dom';
 
 const recuperarDatosDocente = () => {
+
+
     const recuperarDatos = JSON.parse(localStorage.getItem('datosUsuario'));
     if (recuperarDatos && recuperarDatos.token) {
         return [recuperarDatos.token, recuperarDatos.userId];
  }
 };
 
-const CardCursos = ({unCurso,todosLosCursos,gestorCambioFormulario}) => {
+const CardCursos = ({unCurso}) => {
     //console.log(curso);	
 	const [modificar,setModificar] = useState(false);
-
+	const navegar = useNavigate();
+	
 	//? Proceso para modificar
-	const URL = `https://genial-beaker-361708.nw.r.appspot.com/api/cursos/${unCurso._id}` //? URL PARA PACTH
+	const URL = `${process.env.REACT_APP_BACKEND_URL}/cursos/${unCurso._id}`
+	// const URL = `https://genial-beaker-361708.nw.r.appspot.com/api/cursos/${unCurso._id}` //? URL PARA PACTH
     const [curso,setCurso] = useState(unCurso.curso);
     const [opcion,setOpcion] = useState(unCurso.opcion);
     const [aula,setAula] = useState(unCurso.aula);
@@ -44,7 +48,7 @@ const CardCursos = ({unCurso,todosLosCursos,gestorCambioFormulario}) => {
 			
 			
 			console.log(data);
-			todosLosCursos();
+			navegar('/curso/modificado');
 			return console.log(response.data.curso)
 			
 		}catch (err) {
@@ -72,14 +76,14 @@ const CardCursos = ({unCurso,todosLosCursos,gestorCambioFormulario}) => {
 	const cambioGuardar = () => {
 		setModificar(false);
 	};
-	console.log(modificar)
+	//console.log(modificar)
 
   return (
     <div className='card bg-light mb-3' style={{ width: '22rem' }} id='cajita'>
 			{modificar === false ?
 			<div className='card-header'>Curso</div>:<div className='card-header'>Modificar Curso</div>}
 			
-			<div className='card-body' key={unCurso.id}>
+			<div className='cuerpoCursos' key={unCurso._id}>
 
 			{modificar === false ?
 					 <h6 className='nombre-curso'>{unCurso.curso}</h6> : <input 
@@ -90,7 +94,7 @@ const CardCursos = ({unCurso,todosLosCursos,gestorCambioFormulario}) => {
 					 onChange={cambioCurso}
 				 />}
 			
-				<h6>Docente: <span>{unCurso.docente.nombre}</span></h6>
+				{/* <h6>Docente: <span>{unCurso.docente.nombre}</span></h6> */}
 				
 				{modificar === false ?
 				<h6>Opcion: <span>{unCurso.opcion}</span></h6> : 
@@ -136,7 +140,7 @@ const CardCursos = ({unCurso,todosLosCursos,gestorCambioFormulario}) => {
 					 <button  className='modificarCurso' onClick={cambioModificar} >Modificar</button> : <button className='guardarCurso' onClick={gestorFormulario}>Guardar</button>}
 					
 					{/* <div className='cajaModificar' key={curso.id} > <ModificarCurso unCurso={curso} todosLosCursos={todosLosCursos}/>  </div> */}
-					<div  key={unCurso.id}> <EliminarCurso curso={unCurso} todosLosCursos={todosLosCursos}/> </div>
+					<div  key={unCurso.id}> <EliminarCurso curso={unCurso} /> </div>
 						
 				</div>
 			</div>

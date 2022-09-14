@@ -9,14 +9,14 @@ const recuperarDatosDocente = () => {
  }
 };
 
+const EliminaDocente = ({docente,gestionarLogout}) => {
 
-const EliminarCurso = ({curso,todosLosCursos}) => {
     const navegar = useNavigate();
-    
-    const eliminarCurso = async (idCurso) => {
-        const URLEliminar = `${process.env.REACT_APP_BACKEND_URL}/cursos/${idCurso}`
-        
 
+    const eliminarDocente = async (idDocente) => {
+        const URLEliminar = `${process.env.REACT_APP_BACKEND_URL}/docentes/${idDocente}`
+		// const URLEliminar = `https://genial-beaker-361708.nw.r.appspot.com/api/docentes/${idDocente}`
+        
         await axios.delete(URLEliminar,
             {
                 headers: {
@@ -24,7 +24,7 @@ const EliminarCurso = ({curso,todosLosCursos}) => {
                 }
             })
         .then((response) =>{
-            navegar('/curso/eliminado');
+            
             console.log(response.data);
         })
         .catch((error) => {
@@ -33,15 +33,18 @@ const EliminarCurso = ({curso,todosLosCursos}) => {
     };
 
     const gestorDelete = () => {
-        eliminarCurso(curso._id)
-        
+        eliminarDocente(docente._id)
+        localStorage.removeItem('datosUsuario');
+        gestionarLogout();
+        navegar('/');
     }
 
   return (
+    <div> 
     <div className='cajaEliminar'>
         <button className='botonEliminar' onClick={gestorDelete}> Eliminar </button>
-    </div>
+</div></div>
   )
 }
 
-export default EliminarCurso
+export default EliminaDocente

@@ -18,11 +18,16 @@ import FormularioLogin from './pages/FormularioLogin' //login del docente
 import FormularioDocentes from './pages/FormularioDocentes' //Crear docente
 import Logout from './pages/Logout' //cerrar sesion
 import Error from './components/Error'; //Pagina de error
+import ModificarDocente from './pages/ModificarDocente';
+import CursoAgregado from './components/CursoAgregado';
+import CursoEliminado from './components/CursoEliminado';
+import DocenteEliminado from './components/DocenteEliminado';
+import ModificadoCurso from './components/ModificadoCurso';
 
 
 const App = () => {
 	
-	const [tieneAcceso,setTieneAcceso] = useState();
+	const [tieneAcceso,setTieneAcceso] = useState(false);
 	const [datos,setDatos] = useState({});
 	const [token,setToken] = useState({});
 
@@ -79,9 +84,12 @@ const App = () => {
 					</NavLink> : <div display='none'></div>
 						}
 
-					{/* <NavLink className={'navlink'} to='/cursos'>
-						Cursos
-					</NavLink> */}
+					{tieneAcceso === true ? 
+						<NavLink className={'navlink'} to='/docente'>
+						Modificar docente
+					</NavLink> : <div display='none'></div>
+						}
+					
 					<NavLink className={'navlink'} to='/registro'>
 						Crear docente
 					</NavLink>
@@ -99,13 +107,17 @@ const App = () => {
 				</div>
 				{/* A donde se dirige cada componente */}
 				<Routes>
-					<Route path='/' element={<Inicio />} />
+					<Route path='/' element={<Inicio tieneAcceso={tieneAcceso}/>} />
 					<Route path='/cursos' element={<Cursos />} />
 					<Route path='/docentes/*' element={<Docentes />} />
 					<Route path='/acceso' element={<FormularioLogin gestionarAcceso={gestionarAcceso}/>} />
-					<Route path='/registro' element={<FormularioDocentes />} />
+					<Route path='/docente' element={<ModificarDocente gestionarLogout={gestionarLogout}/>} />
+					<Route path='/registro' element={<FormularioDocentes gestionarAcceso={gestionarAcceso}/>} />
 					<Route path='/logout' element={<Logout  gestionarLogout={gestionarLogout}/>} />
-					{/* <Route path='/modificar/curso' element={<ModificarCurso />} /> */}
+					<Route path='/curso/agregado' element={<CursoAgregado />} />
+					<Route path='/curso/modificado' element={<ModificadoCurso />} />
+					<Route path='/curso/eliminado' element={<CursoEliminado />} />
+					<Route path='/docente/eliminado' element={<DocenteEliminado />} />
 					<Route path='/404' element={<Error />} />
 					<Route path='*' element={<Navigate to='/404' replace />} />
 				</Routes>

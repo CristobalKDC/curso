@@ -16,11 +16,11 @@
 }
 
 .cartas {
-    width: 100%;
+    width: 95%;
     margin: 14px;
     display:flex;
     align-items: center;
-    justify-content:space-around;
+    justify-content:space-between;
     flex-wrap: wrap;
     
 }
@@ -57,4 +57,74 @@
 .botonEliminar:hover {
     color: white;
     background-color: red;
+}
+
+.contieneBuscar  {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.inputBuscar {
+    width: 200px;
+    margin-top: 20px;
+}
+
+.cursoAgregadoTotal {
+    height: 83vh;
+}
+.contenedorCursoExito{
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+}
+.cursoAgregado {
+    color:green;
+    position: absolute;
+    text-decoration: none;
+    top:80px;
+}
+.gokuOK {
+    width: 100%;
+    height: 100%;
+    background-image: url(../components/img/cursoCreado.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cursoEliminadoTotal {
+    height: 83.5vh;
+}
+
+.contenedorCursoEliminado {
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+}
+
+.cursoEliminado {
+    color:red;
+    position: absolute;
+    text-decoration: none;
+    top:80px;
+}
+
+.yamcha {
+    width: 100%;
+    height: 100%;
+    background-image: url(../components/img/cursoEliminado.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.bardock {
+    width: 100%;
+    height: 100%;
+    background-image: url(../components/img/bardock.png);
+    background-repeat: no-repeat;
+    background-position: center;
 }

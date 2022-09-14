@@ -1,11 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-const FormularioDocentes = () => {
-   let URL = 'http://localhost:5000/api/docentes/'
+const FormularioDocentes = ({gestionarAcceso}) => {
+//    let URL = 'http://localhost:5000/api/docentes/'
+    const URL = `${process.env.REACT_APP_BACKEND_URL}/docentes/`
+    // const URL = 'https://genial-beaker-361708.nw.r.appspot.com/api/cursos/'
    const { register, handleSubmit, setValue, formState: {errors} } = useForm();
    const onSubmit = data => console.log(data);
+   const navegar = useNavigate();
 
    const gestorFormulario = async (data) => {
     try {
@@ -20,6 +24,9 @@ const FormularioDocentes = () => {
               userId: response.data.userId,
               token: response.data.token })
           );
+
+          gestionarAcceso(data);
+        navegar('/');
         return console.log(response);
     }catch (err) {
         console.log(err);
